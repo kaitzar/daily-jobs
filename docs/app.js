@@ -126,10 +126,13 @@ function buildCard(job, { isBacklog = false } = {}) {
   const ex = $(".excerpt", card);
   const more = $(".more", card);
   if (job.excerpt) {
-    ex.textContent = job.excerpt.trim() + "…";
+    const full = job.excerpt.trim();
+    const teaser = full.replace(/\s+/g, " ").slice(0, 300) + (full.length > 300 ? "…" : "");
+    ex.textContent = teaser;
     more.addEventListener("click", () => {
-      ex.classList.toggle("open");
-      more.textContent = ex.classList.contains("open") ? "Show less" : "Read more";
+      const open = ex.classList.toggle("open");
+      ex.textContent = open ? full : teaser;
+      more.textContent = open ? "Show less" : "Read the full posting";
     });
   } else {
     ex.remove(); more.remove();
