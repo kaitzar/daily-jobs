@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Five a Day</title>
+<meta name="description" content="Five hand-matched jobs, every morning.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <div>
+      <h1>Five a Day</h1>
+      <p class="sub" id="dateline">Loading today's list…</p>
+    </div>
+    <div class="progress" id="progress" hidden>
+      <div class="ring"><span id="progressText">0/5</span></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="skeleton" id="skeleton">
+      <div class="sk-card"></div><div class="sk-card"></div><div class="sk-card"></div>
+    </div>
+  </main>
+
+  <section id="backlogSection" hidden>
+    <div class="divider"><span id="backlogHeading">The backlog</span></div>
+    <p class="note" id="backlogNote"></p>
+    <button class="ghost" id="backlogToggle" hidden>Show the backlog</button>
+    <div id="backlogList"></div>
+  </section>
+
+  <footer class="foot">
+    <span id="poolInfo"></span>
+    <button class="linkbtn" id="statsBtn">What this has learned</button>
+  </footer>
+
+  <dialog id="statsDialog">
+    <h2>What the feed has learned</h2>
+    <div id="statsBody"></div>
+    <form method="dialog"><button class="ghost">Close</button></form>
+  </dialog>
+
+</div>
+
+<template id="cardTemplate">
+  <article class="card">
+    <div class="card-top">
+      <div class="titleblock">
+        <h2 class="title"></h2>
+        <p class="company"></p>
+      </div>
+      <span class="score" title="Match score"></span>
+    </div>
+
+    <div class="meta"></div>
+    <div class="chips"></div>
+
+    <p class="excerpt"></p>
+    <button class="linkbtn more">Read more</button>
+
+    <div class="resumeline">
+      <span class="resumelabel"></span>
+      <button class="linkbtn resumedl">Download resume PDF</button>
+    </div>
+
+    <div class="actions">
+      <button class="btn draft">Draft cover letter</button>
+      <a class="btn primary apply" target="_blank" rel="noopener">Apply →</a>
+      <button class="btn skip">Skip</button>
+    </div>
+
+    <div class="letterbox" hidden>
+      <div class="letterhead">
+        <span class="letterstatus"></span>
+        <span class="letteractions">
+          <button class="linkbtn regen">Rewrite</button>
+          <button class="linkbtn letterdl">Download PDF</button>
+        </span>
+      </div>
+      <textarea class="lettertext" spellcheck="true"
+        placeholder="The draft will appear here."></textarea>
+      <p class="lettersaved">Edits save automatically.</p>
+    </div>
+
+    <div class="skipbox" hidden>
+      <p class="skiplabel">Why are you skipping it?</p>
+      <div class="reasons"></div>
+    </div>
+
+    <div class="decided" hidden>
+      <span class="decidedtext"></span>
+      <button class="linkbtn undo">Undo</button>
+    </div>
+  </article>
+</template>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
